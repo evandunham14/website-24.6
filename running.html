@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Running | E.Dunham</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: black;
+      color: white;
+    }
+    .section {
+      background-color: #222;
+      border-radius: 10px;
+      padding: 25px;
+      margin: 20px auto;
+      max-width: 800px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center">Running</h1>
+    <p class="text-center"><a href="#training" class="btn btn-outline-light">Skip to My Weekly Training</a></p>
+
+    <div class="section">
+      <p>Running has always been a major part of my life. It’s not just a sport, it’s a discipline and a way to stay balanced, mentally and physically. From leading high school teams to following elite athletes, running is something I live and breathe.</p>
+
+      <p>I’m especially inspired by BYU’s collegiate running program. The Cougars have consistently been one of the top NCAA cross country and track programs in the nation. Watching runners like <strong>Conner Mantz</strong> dominate the 10K and qualify for the Olympics, and <strong>Kenneth Rooks</strong> win a national title in the steeplechase, motivates me to aim higher in my own training.</p>
+    </div>
+
+    <div class="section">
+      <h4>Highlight Video: Conner Mantz</h4>
+      <iframe width="100%" height="315" src="https://www.youtube.com/embed/ymZ4RoN7oEw" title="Conner Mantz Highlight" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="section">
+      <h4>Kenneth Rooks' Victory</h4>
+      <img src="kenneth-rooks.png" alt="Kenneth Rooks" class="img-fluid">
+    </div>
+
+    <div id="training" class="section">
+      <h4>My Weekly Training Plan</h4>
+      <ol>
+        <li>Monday – Long Run
+          <ul><li>8 miles steady pace</li></ul>
+        </li>
+        <li>Tuesday – Intervals
+          <ul><li>6x800m with 90 sec rest</li></ul>
+        </li>
+        <li>Wednesday – Recovery Jog
+          <ul><li>4-5 miles easy</li></ul>
+        </li>
+        <li>Thursday – Tempo Run
+          <ul><li>3 miles tempo pace</li></ul>
+        </li>
+        <li>Friday – Hill Repeats
+          <ul><li>10 x 30s sprints uphill</li></ul>
+        </li>
+        <li>Saturday – Race or Time Trial</li>
+        <li>Sunday – Rest</li>
+      </ol>
+    </div>
+
+    <div class="section">
+      <h4>Running Performance Graph</h4>
+      <p><a href="https://public.tableau.com/views/RunningPerformanceSummary/RaceParticipationTrends" target="_blank" class="btn btn-outline-light">View Tableau Visualization</a></p>
+    </div>
+
+    <div class="section text-center">
+      <h4>AI Joke Generator</h4>
+      <p id="jokeText">Click below to get a joke!</p>
+      <button class="btn btn-secondary" onclick="getJoke()">Tell Me a Joke</button>
+    </div>
+  </div>
+
+  <script>
+    async function getJoke() {
+      try {
+        const res = await fetch('https://official-joke-api.appspot.com/random_joke');
+        const data = await res.json();
+        document.getElementById('jokeText').textContent = `${data.setup} — ${data.punchline}`;
+      } catch (error) {
+        document.getElementById('jokeText').textContent = 'Oops! Could not load a joke. Try again later.';
+      }
+    }
+  </script>
+</body>
+</html>
